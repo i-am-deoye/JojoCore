@@ -13,6 +13,7 @@
 		A65A0290222449A200B6E245 /* ModuleExcutor.swift in Sources */ = {isa = PBXBuildFile; fileRef = A65A028F222449A200B6E245 /* ModuleExcutor.swift */; };
 		A65A0292222449C000B6E245 /* Endpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = A65A0291222449C000B6E245 /* Endpoint.swift */; };
 		A65A0294222449D500B6E245 /* EnvironmentalServer.swift in Sources */ = {isa = PBXBuildFile; fileRef = A65A0293222449D500B6E245 /* EnvironmentalServer.swift */; };
+		A65E4370222D4F0C0020EC0F /* Typealias.swift in Sources */ = {isa = PBXBuildFile; fileRef = A65E436F222D4F0C0020EC0F /* Typealias.swift */; };
 		A6644F3B2226A48C00F6F766 /* RemoteBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6644F3A2226A48B00F6F766 /* RemoteBuilder.swift */; };
 		A6644F3D2226AAED00F6F766 /* ISecurity.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6644F3C2226AAED00F6F766 /* ISecurity.swift */; };
 		A67315F521F700DD00ECD04E /* JojoCoreTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A67315F421F700DD00ECD04E /* JojoCoreTests.swift */; };
@@ -50,6 +51,7 @@
 		A65A028F222449A200B6E245 /* ModuleExcutor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModuleExcutor.swift; sourceTree = "<group>"; };
 		A65A0291222449C000B6E245 /* Endpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Endpoint.swift; sourceTree = "<group>"; };
 		A65A0293222449D500B6E245 /* EnvironmentalServer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnvironmentalServer.swift; sourceTree = "<group>"; };
+		A65E436F222D4F0C0020EC0F /* Typealias.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Typealias.swift; sourceTree = "<group>"; };
 		A6644F3A2226A48B00F6F766 /* RemoteBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteBuilder.swift; sourceTree = "<group>"; };
 		A6644F3C2226AAED00F6F766 /* ISecurity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ISecurity.swift; sourceTree = "<group>"; };
 		A67315E621F700DC00ECD04E /* JojoCore.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = JojoCore.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -225,6 +227,7 @@
 				A673161921F73D3300ECD04E /* Payload.swift */,
 				A673161C21F73D3400ECD04E /* Response.swift */,
 				A673161E21F73D3400ECD04E /* SuccessData.swift */,
+				A65E436F222D4F0C0020EC0F /* Typealias.swift */,
 			);
 			path = "Remote Layer";
 			sourceTree = "<group>";
@@ -385,6 +388,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A673161721F73D0F00ECD04E /* SharedPreferenceCache.swift in Sources */,
+				A65E4370222D4F0C0020EC0F /* Typealias.swift in Sources */,
 				A673163121F7433600ECD04E /* RemoteLayer.swift in Sources */,
 				A673161421F73D0F00ECD04E /* IDataBase.swift in Sources */,
 				A673160621F73CD400ECD04E /* ConnectionNotSet.swift in Sources */,

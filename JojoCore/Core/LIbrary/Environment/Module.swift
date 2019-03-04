@@ -72,7 +72,7 @@ public struct Module {
         
         
         if let header = value.value(forKey: "header") as? String, let headerValue = root.value(forKey: "Headers") as? NSDictionary {
-            server.header = Headers()
+            server.header = HTTPHeaders()
             headerValue.allKeys.forEach { (key) in
                 let k = key as! String
                 server.header[k] = headerValue.value(forKey: k) as? String
