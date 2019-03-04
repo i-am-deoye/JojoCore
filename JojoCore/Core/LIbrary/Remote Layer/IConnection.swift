@@ -13,5 +13,5 @@ public protocol IConnection {
                           method: HTTP,
                           payload: Any?,
                           httpBody: HTTPBodyType,
-                          headers: Headers, handle: @escaping ((Response) -> Void))
+                          headers: HTTPHeaders, handle: @escaping ((Response) -> Void))
 }

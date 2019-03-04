@@ -78,11 +78,8 @@ class  DefaultConnection : NSObject, IConnection, URLSessionDataDelegate  {
             
             
             
-            if let response = task.response, let headers = (response as? HTTPURLResponse)?.allHeaderFields {
+            if let response = task.response, let _ = (response as? HTTPURLResponse)?.allHeaderFields {
                 Logger.log(.i, messages: "RESPONSE HEADER : \(response)")
-                if let token = headers["Authorization"] as? String, !token.isEmpty {
-                    Utils.setToken(token)
-                }
             }
             
             
@@ -115,7 +112,7 @@ class  DefaultConnection : NSObject, IConnection, URLSessionDataDelegate  {
         }
     }
     
-    func execute(uri: String, method: HTTP, payload: Any?, httpBody: HTTPBodyType, headers: Headers, handle: @escaping ((Response) -> Void)) {
+    func execute(uri: String, method: HTTP, payload: Any?, httpBody: HTTPBodyType, headers: HTTPHeaders, handle: @escaping ((Response) -> Void)) {
         
         do {
             try connect(uri: uri, method: method, body: payload, httpBody: httpBody, headers: headers, completion: handle)

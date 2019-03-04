@@ -45,4 +45,17 @@ public extension Dictionary {
         object[itemId] = amount
         return object
     }
+    
+   public func pair(by key: String, and value: String) -> Dictionary<String, Any> {
+        var container = self as! Dictionary<String, Any>
+        container[key] = value
+        return container
+    }
+    
+    public static func +(lhs: Dictionary, rhs: Dictionary) -> Dictionary {
+        var container = rhs
+        lhs.forEach({ container[$0.key] = $0.value })
+        return container
+    }
 }
+

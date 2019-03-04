@@ -9,7 +9,7 @@ import Foundation
 
 public protocol IRemoteRepository : IRestful {
     var httpBody : HTTPBodyType { get set }
-    var headers : Headers { get set }
+    var headers : HTTPHeaders { get set }
     func getConnection() -> IConnection?
 }
 
