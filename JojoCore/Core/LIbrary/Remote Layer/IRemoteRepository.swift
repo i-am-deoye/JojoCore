@@ -26,6 +26,16 @@ extension IRemoteRepository  {
         guard let connection = getConnection() else { Logger.log(.s, messages: ConnectionNotSet().localizedDescription); return }
         connection.execute(uri: url, method: HTTP.POST, payload: payload, httpBody: httpBody, headers: headers, handle: handle)
     }
+    
+    public func put(url: String, payload: Any, handle: @escaping ((Response) -> Void) ) {
+        guard let connection = getConnection() else { Logger.log(.s, messages: ConnectionNotSet().localizedDescription); return }
+        connection.execute(uri: url, method: HTTP.PUT, payload: payload, httpBody: httpBody, headers: headers, handle: handle)
+    }
+    
+    public func delete(url: String, handle: @escaping ((Response) -> Void) )  {
+        guard let connection = getConnection() else { Logger.log(.s, messages: ConnectionNotSet().localizedDescription); return }
+        connection.execute(uri: url, method: HTTP.DELETE, payload: JSON(), httpBody: httpBody, headers: headers, handle: handle)
+    }
 }
 
 

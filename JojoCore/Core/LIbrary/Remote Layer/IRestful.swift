@@ -13,6 +13,8 @@ public enum HTTPBodyType {
 }
 
 public protocol IRestful {
-    func get(url: String, handle: @escaping ((Response) -> Void) )
-    func post(url: String, payload: Any, handle: @escaping ((Response) -> Void) )
+    func get(url: String, handle: @escaping ((Response) -> Void))
+    func post(url: String, payload: Any, handle: @escaping ((Response) -> Void))
+    func put(url: String, payload: Any, handle: @escaping ((Response) -> Void))
+    func delete(url: String, handle: @escaping ((Response) -> Void))
 }

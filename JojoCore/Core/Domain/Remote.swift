@@ -43,6 +43,13 @@ final public class Remote : RemoteLayer {
             guard let requestValue = request else { fatalError("request is required for POST method") }
             self.httpBody = .payload
             self.post(url: url, payload: requestValue, handle: response)
+        case .DELETE:
+            self.httpBody = .parameter
+            self.delete(url: url, handle: response)
+        case .PUT:
+            guard let requestValue = request else { fatalError("request is required for PUT method") }
+            self.httpBody = .payload
+            self.put(url: url, payload: requestValue, handle: response)
         default: break
         }
     }
