@@ -10,7 +10,7 @@ import Foundation
 
 
 struct EnvironmentalServer {
-    var header = Headers()
+    var header = HTTPHeaders()
     var baseUrl = ""
     var isCrypto = false
     var algorithm = ""

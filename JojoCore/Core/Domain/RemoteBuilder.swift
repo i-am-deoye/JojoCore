@@ -13,7 +13,7 @@ public class RemoteBuilder {
     public var response: RemoteResponse
     public var request: JSON = JSON()
     
-    public var headers: Headers?
+    public var headers: HTTPHeaders?
     public var http: HTTP = HTTP.GET
     public var url: String = ""
     

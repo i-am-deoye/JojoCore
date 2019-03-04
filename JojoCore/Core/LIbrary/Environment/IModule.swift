@@ -9,7 +9,7 @@
 import Foundation
 
 public protocol IModule {
-    var headers: Headers { get set }
+    var headers: HTTPHeaders { get set }
     var http: HTTP { get set }
     var url: String { get set }
     
