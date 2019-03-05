@@ -7,7 +7,7 @@ Pod::Spec.new do |s|
           #3.  
           s.summary         = "'JojoCore' framework"
           #4.
-          s.homepage        = "http://www.jojocore.com"
+          s.homepage        = "https://github.com/i-am-deoye/JojoCore"
           #5.
           s.license              = "MIT"
           #6.
@@ -18,4 +18,5 @@ Pod::Spec.new do |s|
           s.source              = { :git => "https://github.com/i-am-deoye/JojoCore.git", :tag => "1.0.0" }
           #9.
           s.source_files     = "JojoCore", "JojoCore/**/*.{h,m,swift}"
+          s.swift_version = '4.2'
     end
