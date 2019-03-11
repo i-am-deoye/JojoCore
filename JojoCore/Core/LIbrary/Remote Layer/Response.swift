@@ -10,7 +10,7 @@ import Foundation
 let parseError = "internal error"
 
 public enum Response {
-    case success(SuccessData)
+    case success(ResponseParameters)
     case error(String)
 }
 
@@ -18,13 +18,16 @@ public enum Response {
 
 func  map(json: JSON) ->  Response  {
     
-    var payload = Payload.init()
-    guard let mapped : Payload = payload.parse(json) as? Payload else { return Response.error(parseError) }
-
-    guard !mapped.data.isEmpty else { return Response.error(mapped.message) }
+    let responseParameters = ResponseParameters.init(json: json)
     
-    guard mapped.isSuccessful else { return Response.error(mapped.message)  }
+    guard !responseParameters.isError else {
+        Logger.log(.e, messages: json.toString ?? parseError)
+        return Response.error(responseParameters.responseMessage ?? parseError)
+    }
     
-    let successData = SuccessData.init(anyList: mapped.data, message: mapped.message)
-    return Response.success(successData)
+    guard responseParameters.isSuccessful || responseParameters.data != nil else { return Response.error(responseParameters.responseMessage ?? parseError) }
+    guard responseParameters.data != nil else { return Response.error(responseParameters.responseMessage ?? parseError) }
+    
+    
+    return Response.success(responseParameters)
 }

@@ -7,7 +7,7 @@
 
 import Foundation
 
-public struct SuccessData {
+private public struct SuccessData {
     public var anyList : [Any]
     public var any : Any?
     public var message : String

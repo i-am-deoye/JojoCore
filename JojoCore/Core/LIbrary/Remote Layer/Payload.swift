@@ -7,7 +7,8 @@
 
 import Foundation
 
-struct Payload {
+private public struct Payload {
+    var response : ResponseParameters
     
     var status: Bool = false
     var messages = [String]()
