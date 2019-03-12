@@ -30,12 +30,12 @@ public struct Module {
         guard let environmentServerStringValue = module.value(forKey: "environmentServer") as? String else { fatalError("environmentServer for \(moduleName) not available") }
         
         
-        guard let environmentRoot = root.value(forKey: "EnvironmentServers") as? NSDictionary else { fatalError("EnvironmentServers not available") }
+        guard let environmentRoot = root.value(forKey: "Servers") as? NSDictionary else { fatalError("Servers not available") }
         guard let environmentServerValue = environmentRoot.value(forKey: environmentServerStringValue) as? NSDictionary else { fatalError("server of \(environmentServerStringValue) not available") }
         guard let environmentServer = _Server(environmentServerStringValue, with: environmentServerValue, root: root) else { fatalError("environmentServerValue of \(environmentServerStringValue) cant be nil ") }
         
         
-        guard let endpointValue = module.value(forKey: "endpoints") as? NSDictionary else { /* throw error here*/ return [] }
+        guard let endpointValue = module.value(forKey: "endpoints") as? NSDictionary else { fatalError("Endpoint for \(moduleName) not available") }
         let endpt = endpoint(enpointName, with: endpointValue)
         
         
