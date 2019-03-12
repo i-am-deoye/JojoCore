@@ -9,12 +9,9 @@
 import Foundation
 
 
-struct EnvironmentalServer {
+struct Server {
     var header = HTTPHeaders()
     var baseUrl = ""
-    var isCrypto = false
-    var algorithm = ""
-    var headerAuthType = ""
-    var isLive = false
     
+    init(){}
 }

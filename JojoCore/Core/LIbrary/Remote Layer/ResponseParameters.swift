@@ -24,7 +24,8 @@ public struct ResponseParameters {
     public var data : [JSON]? {
         
         guard let list = json[ResponseParameters.keys[ResponseParameterKey.Data] ?? ""] as? [JSON] else {
-            return [(json[ResponseParameters.keys[ResponseParameterKey.Data] ?? ""] as? JSON ?? JSON())]
+            let value = json[ResponseParameters.keys[ResponseParameterKey.Data] ?? ""] as? JSON
+            return value == nil ? nil : [value!]
         }
         return list
     }

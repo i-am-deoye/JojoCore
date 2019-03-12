@@ -28,7 +28,7 @@
 		A60AEF832236668100FD3A7F /* IRepositoryCRUD.swift in Sources */ = {isa = PBXBuildFile; fileRef = A673160B21F73D0F00ECD04E /* IRepositoryCRUD.swift */; };
 		A60AEF842236668400FD3A7F /* IDataBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = A673160C21F73D0F00ECD04E /* IDataBase.swift */; };
 		A60AEF852236668700FD3A7F /* Cache.swift in Sources */ = {isa = PBXBuildFile; fileRef = A673160821F73D0E00ECD04E /* Cache.swift */; };
-		A60AEF862236669100FD3A7F /* EnvironmentalServer.swift in Sources */ = {isa = PBXBuildFile; fileRef = A65A0293222449D500B6E245 /* EnvironmentalServer.swift */; };
+		A60AEF862236669100FD3A7F /* Server.swift in Sources */ = {isa = PBXBuildFile; fileRef = A65A0293222449D500B6E245 /* Server.swift */; };
 		A60AEF872236669400FD3A7F /* Endpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = A65A0291222449C000B6E245 /* Endpoint.swift */; };
 		A60AEF882236669700FD3A7F /* ModuleExcutor.swift in Sources */ = {isa = PBXBuildFile; fileRef = A65A028F222449A200B6E245 /* ModuleExcutor.swift */; };
 		A60AEF892236669A00FD3A7F /* Module.swift in Sources */ = {isa = PBXBuildFile; fileRef = A64D1F4222047018000DCCB4 /* Module.swift */; };
@@ -41,6 +41,7 @@
 		A60AEF90223666B800FD3A7F /* ConnectionNotSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = A673160521F73CD400ECD04E /* ConnectionNotSet.swift */; };
 		A60AEF91223666C200FD3A7F /* RemoteBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6644F3A2226A48B00F6F766 /* RemoteBuilder.swift */; };
 		A60AEF92223666C500FD3A7F /* Remote.swift in Sources */ = {isa = PBXBuildFile; fileRef = A64D1F4422047038000DCCB4 /* Remote.swift */; };
+		A60AEFD02237BB8A00FD3A7F /* Local.swift in Sources */ = {isa = PBXBuildFile; fileRef = A60AEFCF2237BB8A00FD3A7F /* Local.swift */; };
 		A67315F521F700DD00ECD04E /* JojoCoreTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A67315F421F700DD00ECD04E /* JojoCoreTests.swift */; };
 /* End PBXBuildFile section */
 
@@ -62,12 +63,13 @@
 		A60AEF6222365F8600FD3A7F /* JojoCoreTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = JojoCoreTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		A60AEF6722365F8600FD3A7F /* JojoCoreTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JojoCoreTests.swift; sourceTree = "<group>"; };
 		A60AEF6922365F8600FD3A7F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A60AEFCF2237BB8A00FD3A7F /* Local.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Local.swift; sourceTree = "<group>"; };
 		A64D1F4222047018000DCCB4 /* Module.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Module.swift; sourceTree = "<group>"; };
 		A64D1F4422047038000DCCB4 /* Remote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Remote.swift; sourceTree = "<group>"; };
 		A65A028D2223FB9F00B6E245 /* IModule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IModule.swift; sourceTree = "<group>"; };
 		A65A028F222449A200B6E245 /* ModuleExcutor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModuleExcutor.swift; sourceTree = "<group>"; };
 		A65A0291222449C000B6E245 /* Endpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Endpoint.swift; sourceTree = "<group>"; };
-		A65A0293222449D500B6E245 /* EnvironmentalServer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnvironmentalServer.swift; sourceTree = "<group>"; };
+		A65A0293222449D500B6E245 /* Server.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Server.swift; sourceTree = "<group>"; };
 		A65E436F222D4F0C0020EC0F /* Typealias.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Typealias.swift; sourceTree = "<group>"; };
 		A6644F3A2226A48B00F6F766 /* RemoteBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteBuilder.swift; sourceTree = "<group>"; };
 		A6644F3C2226AAED00F6F766 /* ISecurity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ISecurity.swift; sourceTree = "<group>"; };
@@ -166,7 +168,7 @@
 				A64D1F4222047018000DCCB4 /* Module.swift */,
 				A65A028F222449A200B6E245 /* ModuleExcutor.swift */,
 				A65A0291222449C000B6E245 /* Endpoint.swift */,
-				A65A0293222449D500B6E245 /* EnvironmentalServer.swift */,
+				A65A0293222449D500B6E245 /* Server.swift */,
 			);
 			path = Environment;
 			sourceTree = "<group>";
@@ -291,6 +293,7 @@
 			children = (
 				A64D1F4422047038000DCCB4 /* Remote.swift */,
 				A6644F3A2226A48B00F6F766 /* RemoteBuilder.swift */,
+				A60AEFCF2237BB8A00FD3A7F /* Local.swift */,
 			);
 			path = Domain;
 			sourceTree = "<group>";
@@ -470,10 +473,11 @@
 				A60AEF782236600D00FD3A7F /* IRemoteRepository.swift in Sources */,
 				A60AEF92223666C500FD3A7F /* Remote.swift in Sources */,
 				A60AEF7C2236601B00FD3A7F /* RemoteLayer.swift in Sources */,
-				A60AEF862236669100FD3A7F /* EnvironmentalServer.swift in Sources */,
+				A60AEF862236669100FD3A7F /* Server.swift in Sources */,
 				A60AEF8A2236669D00FD3A7F /* IModule.swift in Sources */,
 				A60AEF7B2236601800FD3A7F /* HTTP.swift in Sources */,
 				A60AEF822236667D00FD3A7F /* IRepositoryQuery.swift in Sources */,
+				A60AEFD02237BB8A00FD3A7F /* Local.swift in Sources */,
 				A60AEF882236669700FD3A7F /* ModuleExcutor.swift in Sources */,
 				A60AEF7E2236666F00FD3A7F /* Query.swift in Sources */,
 				A60AEF8B223666A200FD3A7F /* ISecurity.swift in Sources */,

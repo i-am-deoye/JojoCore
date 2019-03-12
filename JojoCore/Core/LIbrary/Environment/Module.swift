@@ -11,67 +11,52 @@ import Foundation
 public struct Module {
    public static var plistName : String = ""
     
-    var environmentServer: EnvironmentalServer
-    var http: HTTP
+    var environmentServer: Server
     var endpoint: Endpoint
     
     
-    static func module(_ moduleName: String) -> Module? {
-        let modules : [Module] = Utils.loadFromPList(forResource: Module.plistName, handler: { onLoad(with: $0, moduleName: moduleName) })
+    static func module(_ moduleName: String, enpointName: String) -> Module? {
+        let modules : [Module] = Utils.loadFromPList(forResource: Module.plistName, handler: { onLoad(with: $0, moduleName: moduleName, enpointName: enpointName) })
         
-        if modules.isEmpty { /* throw error here*/  return nil }
+        if modules.isEmpty { fatalError("modules can'nt be empy") }
         
         return modules.first
     }
     
-    private static func onLoad(with root: NSDictionary, moduleName: String) -> [Module] {
+    private static func onLoad(with root: NSDictionary, moduleName: String, enpointName: String) -> [Module] {
         
-        guard let modulesRoot = root.value(forKey: "Modules") as? NSDictionary else { /* throw error here*/ return [] }
-        guard let module = modulesRoot.value(forKey: moduleName) as? NSDictionary else { /* throw error here*/ return [] }
-        guard let environmentServerStringValue = module.value(forKey: "environmentServer") as? String else { /* throw error here*/ return [] }
-        
-        guard let httpValue = module.value(forKey: "http") as? String else { /* throw error here*/ return [] }
-        guard let http = HTTP.init(rawValue: httpValue.uppercased()) else { /* throw error here*/ return [] }
+        guard let modulesRoot = root.value(forKey: "Modules") as? NSDictionary else { fatalError("modules not available") }
+        guard let module = modulesRoot.value(forKey: moduleName) as? NSDictionary else { fatalError("module of \(moduleName) not available") }
+        guard let environmentServerStringValue = module.value(forKey: "environmentServer") as? String else { fatalError("environmentServer for \(moduleName) not available") }
         
         
-        guard let environmentRoot = root.value(forKey: "EnvironmentServers") as? NSDictionary else { /* throw error here*/ return [] }
-        guard let environmentServerValue = environmentRoot.value(forKey: environmentServerStringValue) as? NSDictionary else { /* throw error here*/ return [] }
-        guard let environmentServer = environmentServer(with: environmentServerValue, root: root) else { /* throw error here*/ return [] }
+        guard let environmentRoot = root.value(forKey: "EnvironmentServers") as? NSDictionary else { fatalError("EnvironmentServers not available") }
+        guard let environmentServerValue = environmentRoot.value(forKey: environmentServerStringValue) as? NSDictionary else { fatalError("server of \(environmentServerStringValue) not available") }
+        guard let environmentServer = _Server(environmentServerStringValue, with: environmentServerValue, root: root) else { fatalError("environmentServerValue of \(environmentServerStringValue) cant be nil ") }
         
         
         guard let endpointValue = module.value(forKey: "endpoints") as? NSDictionary else { /* throw error here*/ return [] }
-        let endpt = endpoint(with: endpointValue)
+        let endpt = endpoint(enpointName, with: endpointValue)
         
         
-        return [Module.init(environmentServer: environmentServer, http: http, endpoint: endpt)]
+        return [Module.init(environmentServer: environmentServer, endpoint: endpt)]
     }
     
-    private static func environmentServer(with value: NSDictionary, root: NSDictionary) -> EnvironmentalServer? {
+    private static func _Server(_ name: String, with value: NSDictionary, root: NSDictionary) -> Server? {
         
-        var server = EnvironmentalServer.init()
+        var server = Server.init()
         
-        guard let baseUrl = value.value(forKey: "baseUrl") as? String, !baseUrl.isEmpty else { return nil }
-        server.baseUrl = baseUrl
         
-        if let isLive = value.value(forKey: "isLive") as? Bool {
-            server.isLive = isLive
-        }
-        
-        if let headerAuthType = value.value(forKey: "headerAuthType") as? String {
-            server.headerAuthType = headerAuthType
+        if let environment = value.value(forKey: "environment") as? String,
+            let enviroments = root.value(forKey: "Environments") as? NSDictionary,
+            let environmentBaseUrl = enviroments.value(forKey: environment) as? String {
+            server.baseUrl = environmentBaseUrl
         } else {
-            // Log
-        }
-        
-        if let algorithm = value.value(forKey: "algorithm") as? String, let isCrypto = value.value(forKey: "isCrypto") as? Bool  {
-            server.algorithm = algorithm
-            server.isCrypto = isCrypto
-        } else {
-            // Log
+            fatalError("set up environments for your base urls")
         }
         
         
-        if let header = value.value(forKey: "header") as? String, let headerValue = root.value(forKey: "Headers") as? NSDictionary {
+        if let header = value.value(forKey: "header") as? String, let headerValue = root.value(forKey: header) as? NSDictionary {
             server.header = HTTPHeaders()
             headerValue.allKeys.forEach { (key) in
                 let k = key as! String
@@ -79,25 +64,41 @@ public struct Module {
             }
         } else {
             // Log warning
+            Logger.log(.w, messages: "No Headers set for this \(name)")
         }
         
         return server
     }
     
     
-    private static func endpoint(with module: NSDictionary) -> Endpoint {
+    private static func endpoint(_ name: String, with module: NSDictionary) -> Endpoint {
         var endpoint = Endpoint()
         
-        if let live = module.value(forKey: "live") as? String {
+        guard let endPoint = module.value(forKey: name) as? NSDictionary else { fatalError("enpoint \(name) not available") }
+        
+        guard let httpValue = endPoint.value(forKey: "http") as? String else { fatalError("http for \(name) enpoint not available") }
+        guard let http = HTTP.init(rawValue: httpValue.uppercased()) else { fatalError("unable to parsed \(httpValue)") }
+        
+        endpoint.http = http
+        
+        if let isLive = endPoint.value(forKey: "isLive") as? Bool {
+            endpoint.isLive = isLive
+        } else {
+            endpoint.isLive = true
+        }
+        
+        if let live = endPoint.value(forKey: "live") as? String {
             endpoint.live = live
         } else {
             // Log warning
+            Logger.log(.w, messages: "No enpoint specify for this \(name)")
         }
         
-        if let mock = module.value(forKey: "mock") as? String {
+        if let mock = endPoint.value(forKey: "mock") as? String {
             endpoint.mock = mock
         } else {
             // Log warning
+            Logger.log(.w, messages: "No Headers set for this \(name)")
         }
         
         return endpoint
