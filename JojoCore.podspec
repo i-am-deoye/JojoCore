@@ -3,7 +3,7 @@ Pod::Spec.new do |s|
           #1.
           s.name               = "JojoCore"
           #2.
-          s.version            = "0.0.6"
+          s.version            = "0.0.7"
           #3.  
           s.summary         = "'JojoCore' framework"
           #4.
@@ -15,7 +15,7 @@ Pod::Spec.new do |s|
           #7.
           s.platform            = :ios, "10.0"
           #8.
-          s.source              = { :git => "https://github.com/i-am-deoye/JojoCore.git", :tag => "0.0.6" }
+          s.source              = { :git => "https://github.com/i-am-deoye/JojoCore.git", :tag => "0.0.7" }
           #9.
           s.source_files     = "JojoCore", "JojoCore/**/*.{h,m,swift}"
           s.swift_version = '4.2'
