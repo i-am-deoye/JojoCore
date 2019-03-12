@@ -19,11 +19,11 @@ public struct ModuleExcutor : IModule {
     
     
     public static func execute(_ moduleName: String, endPoint: String, otherHeaders: HTTPHeaders=HTTPHeaders()) -> IModule? {
-        guard let module = Module.module(moduleName) else { return nil }
+        guard let module = Module.module(moduleName, enpointName: endPoint) else { return nil }
         
         let headers = (module.environmentServer.header as Dictionary) + (otherHeaders as Dictionary)
-        let http = module.http
-        let url = module.endpoint.url(baseUrl: module.environmentServer.baseUrl, isLive: module.environmentServer.isLive)
+        let http = module.endpoint.http
+        let url = module.endpoint.url(baseUrl: module.environmentServer.baseUrl)
         
         return ModuleExcutor.init(headers: headers, http: http, url: url)
     }
