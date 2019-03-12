@@ -49,7 +49,7 @@ public struct Module {
         
         if let environment = value.value(forKey: "environment") as? String,
             let enviroments = root.value(forKey: "Environments") as? NSDictionary,
-            let environmentBaseUrl = enviroments.value(forKey: environment) as? String {
+            let environmentBaseUrl = enviroments.value(forKey: environment) as? String, !environmentBaseUrl.isEmpty {
             server.baseUrl = environmentBaseUrl
         } else {
             fatalError("set up environments for your base urls")
