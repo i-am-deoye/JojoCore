@@ -190,7 +190,7 @@ class ModuleService {
 }
 ```
 
-3. Local Date Base Setup
+3. Local DB Setup
    
 
 
