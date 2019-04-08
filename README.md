@@ -117,7 +117,7 @@ JojoCore with CocoaPods:
     use_frameworks!
 
     target 'YourAppTargetName' do
-        pod 'JojoCore', '~> 0.0.8'
+        pod 'JojoCore', '~> 0.0.9'
     end
     ```
 
