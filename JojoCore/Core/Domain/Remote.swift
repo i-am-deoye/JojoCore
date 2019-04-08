@@ -11,7 +11,7 @@ import Foundation
 public typealias RemoteResponse = ((Response) -> Void)
 
 final public class Remote : RemoteLayer {
-   fileprivate var security : ISecurity?
+   //fileprivate var security : ISecurity?
     
    public var headers = HTTPHeaders()
    public var httpBody: HTTPBodyType = .parameter
@@ -25,13 +25,10 @@ final public class Remote : RemoteLayer {
     
    public func execute(_ builder: RemoteBuilder) {
     
-       let encrypted : Any? = self.security?.encrypt(builder.request)
-       let request : Any = encrypted != nil ? encrypted! : builder.request as Any
-    
         if let headers = builder.headers {
             self.headers = headers
         }
-        execute(builder.url, request:request, http: builder.http, response: builder.response)
+        execute(builder.url, request:builder.request, http: builder.http, response: builder.response)
    }
     
     public func execute(_ url: String, request: Any?=nil, http: HTTP, response: @escaping RemoteResponse)  {
