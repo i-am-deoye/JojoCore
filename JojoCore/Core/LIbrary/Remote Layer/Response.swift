@@ -10,7 +10,7 @@ import Foundation
 let parseError = "internal error"
 
 public enum Response {
-    case success(ResponseParameters)
+    case success(Any)
     case error(String)
 }
 

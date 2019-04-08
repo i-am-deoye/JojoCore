@@ -8,10 +8,6 @@
 
 import Foundation
 
-protocol ICrypto {
-    func encrypt(with value: String) -> String?
-    func decrypt(with value: String) -> String?
-}
 
 class  DefaultConnection : NSObject, IConnection, URLSessionDataDelegate  {
     
@@ -61,7 +57,6 @@ class  DefaultConnection : NSObject, IConnection, URLSessionDataDelegate  {
         // make the memory and disk Cache 10MB each
         config.urlCache = URLCache(memoryCapacity: 10 * 1024 * 1024, diskCapacity: 10 * 1024 * 1024, diskPath: nil)
         let queue = URLSession.shared.delegateQueue
-        // let urlSession = URLSession.shared
         
         let session = URLSession(configuration: config, delegate: self, delegateQueue: queue)
         let task = session.dataTask(with: request)
@@ -85,14 +80,16 @@ class  DefaultConnection : NSObject, IConnection, URLSessionDataDelegate  {
             
             var response : Response!
             do {
-                if let json = try JSONSerialization.jsonObject(with: self.data, options: []) as? JSON {
-                    Logger.log(.i, messages: "RESPONSE JSON : \(json)")
-                    response = map(json: json)
-                } else {
+                if self.data.isEmpty {
                     response = Response.error("Empty Payload")
+                } else if let json = try JSONSerialization.jsonObject(with: self.data, options: []) as? JSON {
+                    Logger.log(.i, messages: "RESPONSE JSON : \(json)")
+                    response = Response.success(json) //map(json: json)
+                } else {
+                    response = Response.error("Unable to parsed data")
                 }
             } catch {
-                response = Response.error(parseError)
+                response = Response.error(error.localizedDescription)
             }
             
             guard let handler =  self.completionHandler else { return }
