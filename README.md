@@ -145,7 +145,7 @@ The module types should be the same as the one in module's key name (4. Modules)
 	}
 ```
    - Create Endpoint Types : 
-   While the endpoints cases should be the same as the one in endpoints' key names  (4. Modules) Plist File Configuration <ConfigurationName.plist>
+   The endpoint type cases should be the same as the one in endpoints' key names  (4. Modules) Plist File Configuration <ConfigurationName.plist>
 ```swift
 	enum EndpointType : String{
 	     case profileAuthentication
