@@ -97,7 +97,6 @@
 		A673163721F747B600ECD04E /* Dictionary.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Dictionary.swift; sourceTree = "<group>"; };
 		A673163921F7482800ECD04E /* Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
 		A673163B21F7489D00ECD04E /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
-		A673163D21F7496D00ECD04E /* RealmDB.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RealmDB.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -149,14 +148,6 @@
 				A60AEF6922365F8600FD3A7F /* Info.plist */,
 			);
 			path = JojoCoreTests;
-			sourceTree = "<group>";
-		};
-		A6579470225B505300F12EE2 /* Abstract Drivers */ = {
-			isa = PBXGroup;
-			children = (
-				A673163D21F7496D00ECD04E /* RealmDB.swift */,
-			);
-			path = "Abstract Drivers";
 			sourceTree = "<group>";
 		};
 		A668120E2223E03300D92F01 /* Environment */ = {
@@ -244,7 +235,6 @@
 		A673160721F73CFB00ECD04E /* Local Layer */ = {
 			isa = PBXGroup;
 			children = (
-				A6579470225B505300F12EE2 /* Abstract Drivers */,
 				A673160821F73D0E00ECD04E /* Cache.swift */,
 				A673160C21F73D0F00ECD04E /* IDataBase.swift */,
 				A673160B21F73D0F00ECD04E /* IRepositoryCRUD.swift */,
