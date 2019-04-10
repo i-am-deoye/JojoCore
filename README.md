@@ -18,6 +18,8 @@ Some awesome features of JojoCore:
 
 ## Plist File Configuration <ConfigurationName.plist>
 
+Note : you can copy the **Configuration & modify the** [Wiki:Configuration File Template](https://github.com/i-am-deoye/JojoCore/wiki/Configuration-File-Template)
+
 1. Environments 
 ```xml
 This is where you setup the environmental domain for different stacks
@@ -131,7 +133,7 @@ import JojoCore
 
 func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
 // Override point for customization after application launch.
-Module.plistName = "<Configuraion Plist File Name>"
+Module.plistName = "ConfigurationName"
 return  true
 }
 ```
