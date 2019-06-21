@@ -84,11 +84,15 @@ class  DefaultConnection : NSObject, IConnection, URLSessionDataDelegate  {
                 let statusCode = (task.response as! HTTPURLResponse).statusCode
                 if let err = error {
                     response = Response.error(err.localizedDescription)
-                } else if self.data.isEmpty && !"\(statusCode)".contains("2") {
-                    response = Response.error("Empty Payload")
+                } else if self.data.isEmpty {
+                    if "\(statusCode)".contains("2") {
+                        response = Response.success(JSON(), statusCode)
+                    } else {
+                       response = Response.error("Empty Payload")
+                    }
                 } else if let json = try JSONSerialization.jsonObject(with: self.data, options: []) as? JSON {
                     Logger.log(.i, messages: "RESPONSE JSON : \(json)")
-                    response = Response.success(json, statusCode) //map(json: json)
+                    response = Response.success(json, statusCode)
                 } else {
                     response = Response.error("Unable to parsed data")
                 }
@@ -96,7 +100,7 @@ class  DefaultConnection : NSObject, IConnection, URLSessionDataDelegate  {
                 response = Response.error(error.localizedDescription)
             }
             
-            guard let handler =  self.completionHandler else { return }
+            guard let handler =  self.completionHandler else { fatalError("completionHandler can not be nill"); }
             
             Logger.log(.i, messages: "RESPONSE : \(response!)")
             handler(response)
