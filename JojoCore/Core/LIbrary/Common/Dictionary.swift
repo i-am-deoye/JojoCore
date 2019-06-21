@@ -11,12 +11,12 @@ import Foundation
 
 public extension Dictionary {
     
-   public var data : Data? {
+    var data : Data? {
         let dataString = self.toString
         return dataString?.data(using: String.Encoding(rawValue: String.Encoding.utf8.rawValue), allowLossyConversion: false)
     }
     
-   public var toString : String? {
+    var toString : String? {
         if let json = try? JSONSerialization.data(withJSONObject: self, options: []) {
             if let content = String(data: json, encoding: String.Encoding.utf8) {
                 return content
@@ -26,7 +26,7 @@ public extension Dictionary {
         return nil
     }
     
-   public var stringFromHttpParameters : String {
+   var stringFromHttpParameters : String {
         guard !self.isEmpty else { return "" }
         
         var parametersString = ""
@@ -40,19 +40,19 @@ public extension Dictionary {
         return parametersString.addingPercentEncoding(withAllowedCharacters: .urlHostAllowed)!
     }
     
-   public static func set(itemId: String, amount: Double ) -> JSON {
+   static func set(itemId: String, amount: Double ) -> JSON {
         var object = JSON()
         object[itemId] = amount
         return object
     }
     
-   public func pair(by key: String, and value: String) -> Dictionary<String, Any> {
+   func pair(by key: String, and value: String) -> Dictionary<String, Any> {
         var container = self as! Dictionary<String, Any>
         container[key] = value
         return container
     }
     
-    public static func +(lhs: Dictionary, rhs: Dictionary) -> Dictionary {
+    static func +(lhs: Dictionary, rhs: Dictionary) -> Dictionary {
         var container = rhs
         lhs.forEach({ container[$0.key] = $0.value })
         return container

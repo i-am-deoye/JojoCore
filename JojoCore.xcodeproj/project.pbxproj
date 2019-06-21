@@ -365,9 +365,11 @@
 				TargetAttributes = {
 					A60AEF5922365F8500FD3A7F = {
 						CreatedOnToolsVersion = 10.1;
+						LastSwiftMigration = 1020;
 					};
 					A60AEF6122365F8600FD3A7F = {
 						CreatedOnToolsVersion = 10.1;
+						LastSwiftMigration = 1020;
 					};
 					A67315EE21F700DD00ECD04E = {
 						CreatedOnToolsVersion = 10.1;
@@ -380,6 +382,7 @@
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
+				Base,
 			);
 			mainGroup = A67315DC21F700DC00ECD04E;
 			productRefGroup = A67315E721F700DC00ECD04E /* Products */;
@@ -528,7 +531,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.flint.JojoCore;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -553,7 +556,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.flint.JojoCore;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
@@ -572,7 +575,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.flint.JojoCoreTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -591,7 +594,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.flint.JojoCoreTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
