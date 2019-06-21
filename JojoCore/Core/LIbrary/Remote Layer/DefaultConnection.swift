@@ -69,27 +69,28 @@ class  DefaultConnection : NSObject, IConnection, URLSessionDataDelegate  {
     }
     
     func urlSession(_ session: URLSession, task: URLSessionTask, didCompleteWithError error: Error?) {
+        
+        
         DispatchQueue.main.async {
-            
-            
             
             if let response = task.response, let _ = (response as? HTTPURLResponse)?.allHeaderFields {
                 Logger.log(.i, messages: "RESPONSE HEADER : \(response)")
             }
             
-            
             var response : Response!
             do {
-                if self.data.isEmpty {
-                    response = Response.error("Empty Payload")
+                if let err = error {
+                    response = Response.error(err.localizedDescription, task.response)
+                } else if self.data.isEmpty {
+                    response = Response.error("Empty Payload", task.response)
                 } else if let json = try JSONSerialization.jsonObject(with: self.data, options: []) as? JSON {
                     Logger.log(.i, messages: "RESPONSE JSON : \(json)")
-                    response = Response.success(json) //map(json: json)
+                    response = Response.success(json, task.response) //map(json: json)
                 } else {
-                    response = Response.error("Unable to parsed data")
+                    response = Response.error("Unable to parsed data", task.response)
                 }
             } catch {
-                response = Response.error(error.localizedDescription)
+                response = Response.error(error.localizedDescription, task.response)
             }
             
             guard let handler =  self.completionHandler else { return }
@@ -114,7 +115,7 @@ class  DefaultConnection : NSObject, IConnection, URLSessionDataDelegate  {
         do {
             try connect(uri: uri, method: method, body: payload, httpBody: httpBody, headers: headers, completion: handle)
         } catch {
-            let response = Response.error(error.localizedDescription)
+            let response = Response.error(error.localizedDescription, nil)
             handle(response)
         }
     }
