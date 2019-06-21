@@ -84,7 +84,7 @@ class  DefaultConnection : NSObject, IConnection, URLSessionDataDelegate  {
                 let statusCode = (task.response as! HTTPURLResponse).statusCode
                 if let err = error {
                     response = Response.error(err.localizedDescription)
-                } else if self.data.isEmpty {
+                } else if self.data.isEmpty && !"\(statusCode)".contains("2") {
                     response = Response.error("Empty Payload")
                 } else if let json = try JSONSerialization.jsonObject(with: self.data, options: []) as? JSON {
                     Logger.log(.i, messages: "RESPONSE JSON : \(json)")
