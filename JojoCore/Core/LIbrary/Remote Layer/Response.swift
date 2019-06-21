@@ -10,24 +10,24 @@ import Foundation
 let parseError = "internal error"
 
 public enum Response {
-    case success(Any, URLResponse?)
-    case error(String, URLResponse?)
+    case success(Any, Int)
+    case error(String)
 }
 
 
 
-func  map(json: JSON, httpResponse: URLResponse) ->  Response  {
+func  map(json: JSON, httpResponse: HTTPURLResponse) ->  Response  {
     
     let responseParameters = ResponseParameters.init(json: json)
     
     guard !responseParameters.isError else {
         Logger.log(.e, messages: json.toString ?? parseError)
-        return Response.error(responseParameters.responseMessage ?? parseError, httpResponse)
+        return Response.error(responseParameters.responseMessage ?? parseError)
     }
     
-    guard responseParameters.isSuccessful || responseParameters.data != nil else { return Response.error(responseParameters.responseMessage ?? parseError, httpResponse) }
-    guard responseParameters.data != nil else { return Response.error(responseParameters.responseMessage ?? parseError, httpResponse) }
+    guard responseParameters.isSuccessful || responseParameters.data != nil else { return Response.error(responseParameters.responseMessage ?? parseError) }
+    guard responseParameters.data != nil else { return Response.error(responseParameters.responseMessage ?? parseError) }
     
     
-    return Response.success(responseParameters, httpResponse)
+    return Response.success(responseParameters, httpResponse.statusCode)
 }

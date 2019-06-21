@@ -36,15 +36,16 @@ class  DefaultConnection : NSObject, IConnection, URLSessionDataDelegate  {
         
         self.completionHandler = completion
         guard let uri = uri.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed),
-            let url = URL.init(string: uri) else { return  }
+            let url = URL.init(string: uri) else { fatalError("Unable to configured URL");  }
         
-        
+        Logger.log(.i, messages: "URL : \(uri)")
         var request = URLRequest.init(url: url, cachePolicy: URLRequest.CachePolicy.useProtocolCachePolicy, timeoutInterval: 1200)
         request.httpMethod = method.rawValue
         request.allHTTPHeaderFields = headers
         
         switch httpBody {
         case .payload:
+            Logger.log(.i, messages: "REQUEST PAYLOAD : \(body!)")
             request.httpBody = body! is JSON ?  try JSONSerialization.data(withJSONObject: body!, options: .prettyPrinted) : (body as? String ?? "").data(using: String.Encoding.utf8, allowLossyConversion: false)
             break
         case .parameter:
@@ -79,18 +80,20 @@ class  DefaultConnection : NSObject, IConnection, URLSessionDataDelegate  {
             
             var response : Response!
             do {
+                
+                let statusCode = (task.response as! HTTPURLResponse).statusCode
                 if let err = error {
-                    response = Response.error(err.localizedDescription, task.response)
+                    response = Response.error(err.localizedDescription)
                 } else if self.data.isEmpty {
-                    response = Response.error("Empty Payload", task.response)
+                    response = Response.error("Empty Payload")
                 } else if let json = try JSONSerialization.jsonObject(with: self.data, options: []) as? JSON {
                     Logger.log(.i, messages: "RESPONSE JSON : \(json)")
-                    response = Response.success(json, task.response) //map(json: json)
+                    response = Response.success(json, statusCode) //map(json: json)
                 } else {
-                    response = Response.error("Unable to parsed data", task.response)
+                    response = Response.error("Unable to parsed data")
                 }
             } catch {
-                response = Response.error(error.localizedDescription, task.response)
+                response = Response.error(error.localizedDescription)
             }
             
             guard let handler =  self.completionHandler else { return }
@@ -115,7 +118,7 @@ class  DefaultConnection : NSObject, IConnection, URLSessionDataDelegate  {
         do {
             try connect(uri: uri, method: method, body: payload, httpBody: httpBody, headers: headers, completion: handle)
         } catch {
-            let response = Response.error(error.localizedDescription, nil)
+            let response = Response.error(error.localizedDescription)
             handle(response)
         }
     }
