@@ -8,8 +8,9 @@
 
 import Foundation
 
+
 public class LocalLayer<E:Persistable> : LocalRepository<E> {
-    init(entityClass: E.Type) {
+    public init(entityClass: E.Type) {
         super.init(entityClass: entityClass, db: nil)
     }
 }
