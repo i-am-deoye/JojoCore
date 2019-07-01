@@ -9,6 +9,5 @@
 import Foundation
 
 public protocol Persistable {
-    var id : String { get set }
 }
 

@@ -13,3 +13,4 @@ public typealias JSON = [String : Any]
 public typealias URLConvertible = String
 public typealias HTTPHeaders = [String : String]
 public typealias Parameters = Dictionary<String,String>
+public typealias VariablePaths = Dictionary<String,String>

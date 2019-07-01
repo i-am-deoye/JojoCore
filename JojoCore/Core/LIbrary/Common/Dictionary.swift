@@ -57,5 +57,12 @@ public extension Dictionary {
         lhs.forEach({ container[$0.key] = $0.value })
         return container
     }
+    
+    func interpolateUrlWithVariablePaths (_ url: String) -> String {
+        var _url = url
+        func onGet(k: String, v: String) { _url = _url.replacingOccurrences(of: k, with: v)  }
+        (self as! Dictionary<String, String>).forEach(onGet)
+        return _url
+    }
 }
 
