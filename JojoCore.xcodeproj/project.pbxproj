@@ -41,7 +41,10 @@
 		A60AEF91223666C200FD3A7F /* RemoteBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6644F3A2226A48B00F6F766 /* RemoteBuilder.swift */; };
 		A60AEF92223666C500FD3A7F /* Remote.swift in Sources */ = {isa = PBXBuildFile; fileRef = A64D1F4422047038000DCCB4 /* Remote.swift */; };
 		A60AEFD02237BB8A00FD3A7F /* Local.swift in Sources */ = {isa = PBXBuildFile; fileRef = A60AEFCF2237BB8A00FD3A7F /* Local.swift */; };
+		A64CE9C222CB61ED00DE9E24 /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = A64CE9C122CB61ED00DE9E24 /* String.swift */; };
+		A64CE9C422CB67AD00DE9E24 /* Task.swift in Sources */ = {isa = PBXBuildFile; fileRef = A64CE9C322CB67AD00DE9E24 /* Task.swift */; };
 		A67315F521F700DD00ECD04E /* JojoCoreTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A67315F421F700DD00ECD04E /* JojoCoreTests.swift */; };
+		A6D5E50622E5CEA100DFB043 /* Upload.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6D5E50522E5CEA100DFB043 /* Upload.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -63,6 +66,8 @@
 		A60AEF6722365F8600FD3A7F /* JojoCoreTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JojoCoreTests.swift; sourceTree = "<group>"; };
 		A60AEF6922365F8600FD3A7F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A60AEFCF2237BB8A00FD3A7F /* Local.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Local.swift; sourceTree = "<group>"; };
+		A64CE9C122CB61ED00DE9E24 /* String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
+		A64CE9C322CB67AD00DE9E24 /* Task.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Task.swift; sourceTree = "<group>"; };
 		A64D1F4222047018000DCCB4 /* Module.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Module.swift; sourceTree = "<group>"; };
 		A64D1F4422047038000DCCB4 /* Remote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Remote.swift; sourceTree = "<group>"; };
 		A65A028D2223FB9F00B6E245 /* IModule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IModule.swift; sourceTree = "<group>"; };
@@ -97,6 +102,7 @@
 		A673163721F747B600ECD04E /* Dictionary.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Dictionary.swift; sourceTree = "<group>"; };
 		A673163921F7482800ECD04E /* Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
 		A673163B21F7489D00ECD04E /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		A6D5E50522E5CEA100DFB043 /* Upload.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Upload.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -220,6 +226,9 @@
 				A673163721F747B600ECD04E /* Dictionary.swift */,
 				A673163921F7482800ECD04E /* Utils.swift */,
 				A673163B21F7489D00ECD04E /* Constants.swift */,
+				A65E436F222D4F0C0020EC0F /* Typealias.swift */,
+				A64CE9C122CB61ED00DE9E24 /* String.swift */,
+				A64CE9C322CB67AD00DE9E24 /* Task.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -254,11 +263,11 @@
 				A673162F21F7433600ECD04E /* RemoteLayer.swift */,
 				A673161B21F73D3300ECD04E /* HTTP.swift */,
 				A673163521F746F900ECD04E /* DefaultConnection.swift */,
+				A6D5E50522E5CEA100DFB043 /* Upload.swift */,
 				A673161A21F73D3300ECD04E /* IConnection.swift */,
 				A673161D21F73D3400ECD04E /* IRemoteRepository.swift */,
 				A673161F21F73D3400ECD04E /* IRestful.swift */,
 				A673161C21F73D3400ECD04E /* Response.swift */,
-				A65E436F222D4F0C0020EC0F /* Typealias.swift */,
 				A60AEF5322365C9300FD3A7F /* ResponseParameters.swift */,
 			);
 			path = "Remote Layer";
@@ -454,6 +463,7 @@
 				A60AEF91223666C200FD3A7F /* RemoteBuilder.swift in Sources */,
 				A60AEF7322365FEC00FD3A7F /* Typealias.swift in Sources */,
 				A60AEF7F2236667300FD3A7F /* Persistable.swift in Sources */,
+				A64CE9C422CB67AD00DE9E24 /* Task.swift in Sources */,
 				A60AEF8D223666AB00FD3A7F /* Utils.swift in Sources */,
 				A60AEF842236668400FD3A7F /* IDataBase.swift in Sources */,
 				A60AEF812236667A00FD3A7F /* LocalLayer.swift in Sources */,
@@ -461,6 +471,7 @@
 				A60AEF7A2236601500FD3A7F /* DefaultConnection.swift in Sources */,
 				A60AEF852236668700FD3A7F /* Cache.swift in Sources */,
 				A60AEF782236600D00FD3A7F /* IRemoteRepository.swift in Sources */,
+				A6D5E50622E5CEA100DFB043 /* Upload.swift in Sources */,
 				A60AEF92223666C500FD3A7F /* Remote.swift in Sources */,
 				A60AEF7C2236601B00FD3A7F /* RemoteLayer.swift in Sources */,
 				A60AEF862236669100FD3A7F /* Server.swift in Sources */,
@@ -480,6 +491,7 @@
 				A60AEF872236669400FD3A7F /* Endpoint.swift in Sources */,
 				A60AEF90223666B800FD3A7F /* ConnectionNotSet.swift in Sources */,
 				A60AEF772236600A00FD3A7F /* IRestful.swift in Sources */,
+				A64CE9C222CB61ED00DE9E24 /* String.swift in Sources */,
 				A60AEF8C223666A700FD3A7F /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

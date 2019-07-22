@@ -60,8 +60,8 @@ public extension Dictionary {
     
     func interpolateUrlWithVariablePaths (_ url: String) -> String {
         var _url = url
-        func onGet(k: String, v: String) { _url = _url.replacingOccurrences(of: k, with: v)  }
-        (self as! Dictionary<String, String>).forEach(onGet)
+        func onEach(k: String, v: String) { _url = _url.replacingOccurrences(of: k, with: v)  }
+        (self as! Dictionary<String, String>).forEach(onEach)
         return _url
     }
 }
