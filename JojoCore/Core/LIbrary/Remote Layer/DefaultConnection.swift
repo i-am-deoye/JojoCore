@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import Network
 
 
 class  DefaultConnection : NSObject, IConnection, URLSessionDataDelegate  {
@@ -81,7 +82,7 @@ class  DefaultConnection : NSObject, IConnection, URLSessionDataDelegate  {
             var response : Response!
             do {
                 
-                let statusCode = (task.response as! HTTPURLResponse).statusCode
+                let statusCode = (task.response as? HTTPURLResponse)?.statusCode ?? 1991
                 if let err = error {
                     response = Response.error(err.localizedDescription)
                 } else if self.data.isEmpty {
@@ -118,7 +119,7 @@ class  DefaultConnection : NSObject, IConnection, URLSessionDataDelegate  {
     }
     
     func execute(uri: String, method: HTTP, payload: Any?, httpBody: HTTPBodyType, headers: HTTPHeaders, handle: @escaping ((Response) -> Void)) {
-        
+    
         do {
             try connect(uri: uri, method: method, body: payload, httpBody: httpBody, headers: headers, completion: handle)
         } catch {

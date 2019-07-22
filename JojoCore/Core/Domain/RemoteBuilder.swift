@@ -19,11 +19,11 @@ public class RemoteBuilder {
     
     
     
-    public init(module: IModule, parameter: Parameters=Parameters(), request: JSON=JSON(), response:@escaping RemoteResponse) {
+    public init(module: IModule, variablePaths: VariablePaths=VariablePaths(), parameter: Parameters=Parameters(), request: JSON=JSON(), response:@escaping RemoteResponse) {
         self.http = module.http
         self.response = response
         self.headers = module.headers
         self.request = request
-        self.url = module.url + parameter.stringFromHttpParameters
+        self.url = variablePaths.interpolateUrlWithVariablePaths(module.url) + parameter.stringFromHttpParameters
     }
 }
