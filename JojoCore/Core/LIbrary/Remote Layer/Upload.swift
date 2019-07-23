@@ -44,7 +44,11 @@ public class Upload {
         request.httpBody = dataToUpload
         request.httpShouldHandleCookies = false
         
-        let session = URLSession()
+        
+        let config = URLSession.shared.configuration
+        // make the memory and disk Cache 10MB each
+        config.urlCache = URLCache(memoryCapacity: 10 * 1024 * 1024, diskCapacity: 10 * 1024 * 1024, diskPath: nil)
+        let session = URLSession.init(configuration: config)
         session.dataTask(with: request, completionHandler: handler)
     }
     
