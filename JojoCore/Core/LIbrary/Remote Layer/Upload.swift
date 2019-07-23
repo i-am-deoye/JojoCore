@@ -16,7 +16,7 @@ public struct UploadRequest {
     let fileName: String
     let data: Data
     
-    init(fullUrl: String, contentTypeValue: String, boundary: String, fileName: String, data: Data) {
+   public init(fullUrl: String, contentTypeValue: String, boundary: String, fileName: String, data: Data) {
         guard !fullUrl.isEmpty && !contentTypeValue.isEmpty && !boundary.isEmpty && !fileName.isEmpty && !data.isEmpty else {
             Logger.log(.e, messages: "fullUrl :: contentTypeValue :: boundary :: fileName :: data")
             Logger.log(.e, messages: "Your parameters can't be empty!!!")
