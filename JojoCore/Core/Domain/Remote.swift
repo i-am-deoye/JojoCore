@@ -12,7 +12,7 @@ public typealias RemoteResponse = ((Response) -> Void)
 
 final public class Remote : RemoteLayer {
    //fileprivate var security : ISecurity?
-    
+   public static var unauthorize : (() -> Void)?
    public var headers = HTTPHeaders()
    public var httpBody: HTTPBodyType = .parameter
     
@@ -20,6 +20,7 @@ final public class Remote : RemoteLayer {
    public init() { }
    
    public func getConnection() -> IConnection? {
+        DefaultConnection.unauthorize = Remote.unauthorize
         return DefaultConnection.init()
    }
     

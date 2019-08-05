@@ -12,6 +12,7 @@ import Network
 
 class  DefaultConnection : NSObject, IConnection, URLSessionDataDelegate  {
     
+    static var unauthorize : (() -> Void)?
     private var completionHandler:((Response) -> Void)?
     private var cacheDuration: Int?
     private var data: Data
@@ -83,6 +84,10 @@ class  DefaultConnection : NSObject, IConnection, URLSessionDataDelegate  {
             do {
                 
                 let statusCode = (task.response as? HTTPURLResponse)?.statusCode ?? 1991
+                if statusCode == 401 {
+                    DefaultConnection.unauthorize?()
+                }
+                
                 if let err = error {
                     response = Response.error(err.localizedDescription)
                 } else if self.data.isEmpty {
