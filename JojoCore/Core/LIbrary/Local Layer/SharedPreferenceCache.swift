@@ -3,6 +3,7 @@ import Foundation
 
 
 public class SharedPreferenceCache: ICache {
+    
     var preferences: UserDefaults = UserDefaults.standard
     
     public init() {
@@ -43,6 +44,13 @@ public class SharedPreferenceCache: ICache {
         return self
     }
     
+    @discardableResult
+    public func putSerialize(key: String, value: Any) -> ICache {
+        preferences.setValue(value, forKey: key)
+        preferences.synchronize()
+        return self
+    }
+    
 
     
     public func getValue(key: String) -> Any? {
@@ -65,7 +73,9 @@ public class SharedPreferenceCache: ICache {
         return preferences.string(forKey: key)
     }
     
-
+    public func getSerialize(key: String) -> Any? {
+        return preferences.object(forKey: key)
+    }
     
     public func containsKey(key: String) -> Bool {
         let entries = self.entries()

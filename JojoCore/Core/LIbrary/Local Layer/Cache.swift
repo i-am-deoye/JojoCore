@@ -3,6 +3,7 @@ import Foundation
 public typealias Serializable = NSDictionary
 public protocol ICache {
     
+    func putSerialize(key: String, value: Any) -> ICache;
     func putBoolean(key: String, value: Bool) -> ICache;
     func putInteger(key: String, value: Int) -> ICache;
     func putFloat(key: String, value: Float) -> ICache;
@@ -11,6 +12,7 @@ public protocol ICache {
     func getInteger(key: String) -> Int?;
     func getFloat(key: String) -> Float?;
     func getString(key: String) -> String?;
+    func getSerialize(key: String) -> Any?;
     func containsKey(key: String) -> Bool;
     func clear();
     func remove(key: String);
