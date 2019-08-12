@@ -42,6 +42,7 @@
 		A60AEF92223666C500FD3A7F /* Remote.swift in Sources */ = {isa = PBXBuildFile; fileRef = A64D1F4422047038000DCCB4 /* Remote.swift */; };
 		A60AEFD02237BB8A00FD3A7F /* Local.swift in Sources */ = {isa = PBXBuildFile; fileRef = A60AEFCF2237BB8A00FD3A7F /* Local.swift */; };
 		A64CE9C222CB61ED00DE9E24 /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = A64CE9C122CB61ED00DE9E24 /* String.swift */; };
+		A64DBAE022F989F8004C26E0 /* OfflineOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = A64DBADF22F989F8004C26E0 /* OfflineOperation.swift */; };
 		A67315F521F700DD00ECD04E /* JojoCoreTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A67315F421F700DD00ECD04E /* JojoCoreTests.swift */; };
 		A6D5E50622E5CEA100DFB043 /* Upload.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6D5E50522E5CEA100DFB043 /* Upload.swift */; };
 /* End PBXBuildFile section */
@@ -68,6 +69,7 @@
 		A64CE9C122CB61ED00DE9E24 /* String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
 		A64D1F4222047018000DCCB4 /* Module.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Module.swift; sourceTree = "<group>"; };
 		A64D1F4422047038000DCCB4 /* Remote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Remote.swift; sourceTree = "<group>"; };
+		A64DBADF22F989F8004C26E0 /* OfflineOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OfflineOperation.swift; sourceTree = "<group>"; };
 		A65A028D2223FB9F00B6E245 /* IModule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IModule.swift; sourceTree = "<group>"; };
 		A65A028F222449A200B6E245 /* ModuleExcutor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModuleExcutor.swift; sourceTree = "<group>"; };
 		A65A0291222449C000B6E245 /* Endpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Endpoint.swift; sourceTree = "<group>"; };
@@ -266,6 +268,7 @@
 				A673161F21F73D3400ECD04E /* IRestful.swift */,
 				A673161C21F73D3400ECD04E /* Response.swift */,
 				A60AEF5322365C9300FD3A7F /* ResponseParameters.swift */,
+				A64DBADF22F989F8004C26E0 /* OfflineOperation.swift */,
 			);
 			path = "Remote Layer";
 			sourceTree = "<group>";
@@ -457,6 +460,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A60AEF752236600400FD3A7F /* Response.swift in Sources */,
+				A64DBAE022F989F8004C26E0 /* OfflineOperation.swift in Sources */,
 				A60AEF91223666C200FD3A7F /* RemoteBuilder.swift in Sources */,
 				A60AEF7322365FEC00FD3A7F /* Typealias.swift in Sources */,
 				A60AEF7F2236667300FD3A7F /* Persistable.swift in Sources */,

@@ -36,6 +36,8 @@ class  DefaultConnection : NSObject, IConnection, URLSessionDataDelegate  {
                  headers: HTTPHeaders?,
                  completion: ((Response) -> ())?) throws {
         
+        OfflineOperation.cacheRequest(uri, body: body as? JSON ?? JSON() , method: method, headers: headers ?? HTTPHeaders())
+        
         self.completionHandler = completion
         guard let uri = uri.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed),
             let url = URL.init(string: uri) else { fatalError("Unable to configured URL");  }
@@ -76,7 +78,10 @@ class  DefaultConnection : NSObject, IConnection, URLSessionDataDelegate  {
         
         DispatchQueue.main.async {
             
+            var url : String?
+            
             if let response = task.response, let _ = (response as? HTTPURLResponse)?.allHeaderFields {
+                url = response.url!.absoluteString
                 Logger.log(.i, messages: "RESPONSE HEADER : \(response)")
             }
             
@@ -99,6 +104,9 @@ class  DefaultConnection : NSObject, IConnection, URLSessionDataDelegate  {
                 } else if let json = try JSONSerialization.jsonObject(with: self.data, options: []) as? JSON {
                     Logger.log(.i, messages: "RESPONSE JSON : \(json)")
                     response = Response.success(json, statusCode)
+                    if let urlValue = url {
+                        OfflineOperation.remove(by: urlValue)
+                    }
                 } else {
                     response = Response.error("Unable to parsed data")
                 }
