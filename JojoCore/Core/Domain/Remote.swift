@@ -23,7 +23,9 @@ final public class Remote : RemoteLayer {
    
    public func getConnection() -> IConnection? {
         DefaultConnection.unauthorize = Remote.unauthorize
-        return DefaultConnection.init()
+        let connection = DefaultConnection.init()
+        connection.allHeaderFieldsHandler = allHeaderFieldsHandler
+        return connection
    }
     
    public func execute(_ builder: RemoteBuilder) {
