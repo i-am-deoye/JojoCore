@@ -16,6 +16,7 @@ public class RemoteBuilder {
     public var headers: HTTPHeaders?
     public var http: HTTP = HTTP.GET
     public var url: String = ""
+    public var allHeaderFieldsHandler : (([AnyHashable : Any]) -> Void)?
     
     
     

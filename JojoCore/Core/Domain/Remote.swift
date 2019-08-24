@@ -11,10 +11,12 @@ import Foundation
 public typealias RemoteResponse = ((Response) -> Void)
 
 final public class Remote : RemoteLayer {
+    
    //fileprivate var security : ISecurity?
    public static var unauthorize : (() -> Void)?
    public var headers = HTTPHeaders()
    public var httpBody: HTTPBodyType = .parameter
+   public var allHeaderFieldsHandler: (([AnyHashable : Any]) -> Void)?
     
     
    public init() { }
@@ -29,6 +31,7 @@ final public class Remote : RemoteLayer {
         if let headers = builder.headers {
             self.headers = headers
         }
+        self.allHeaderFieldsHandler = builder.allHeaderFieldsHandler
         execute(builder.url, request:builder.request, http: builder.http, response: builder.response)
    }
     

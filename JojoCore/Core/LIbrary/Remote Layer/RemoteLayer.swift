@@ -9,12 +9,14 @@
 import Foundation
 
 public protocol RemoteLayer : IRemoteRepository {
-
+    var allHeaderFieldsHandler : (([AnyHashable : Any]) -> Void)? { get set }
 }
 
 extension RemoteLayer {
     
     public func getConnection() -> IConnection? {
-        return DefaultConnection.init()
+        let connection = DefaultConnection.init()
+        connection.allHeaderFieldsHandler = allHeaderFieldsHandler
+        return connection
     }
 }

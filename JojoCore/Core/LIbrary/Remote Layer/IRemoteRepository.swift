@@ -19,6 +19,7 @@ extension IRemoteRepository  {
     
    public func get(url: String, handle: @escaping ((Response) -> Void) )  {
         guard let connection = getConnection() else { Logger.log(.s, messages: ConnectionNotSet().localizedDescription); return }
+    
         connection.execute(uri: url, method: HTTP.GET, payload: JSON(), httpBody: httpBody, headers: headers, handle: handle)
     }
     

@@ -16,6 +16,7 @@ class  DefaultConnection : NSObject, IConnection, URLSessionDataDelegate  {
     private var completionHandler:((Response) -> Void)?
     private var cacheDuration: Int?
     private var data: Data
+    var allHeaderFieldsHandler : (([AnyHashable : Any]) -> Void)?
     
     
     override init() {
@@ -80,7 +81,8 @@ class  DefaultConnection : NSObject, IConnection, URLSessionDataDelegate  {
             
             var url : String?
             
-            if let response = task.response, let _ = (response as? HTTPURLResponse)?.allHeaderFields {
+            if let response = task.response, let allHeaderFields = (response as? HTTPURLResponse)?.allHeaderFields {
+                self.allHeaderFieldsHandler?(allHeaderFields)
                 url = response.url!.absoluteString
                 Logger.log(.i, messages: "RESPONSE HEADER : \(response)")
             }
